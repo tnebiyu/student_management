@@ -1,4 +1,3 @@
-import 'dart:html';
 import '../model/student_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -49,6 +48,19 @@ List<Student>? _student;
   }
   clearRegisteredStudent(){
     registeredList.clear();
+  }
+  void updateStudent(Student newStudent){
+    bool isFound = false;
+        for(var item in registeredList){
+          if(item.student.id == newStudent.id){
+            isFound =true;
+            item.student = newStudent;
+
+
+
+
+          }
+        }
   }
 }
 
