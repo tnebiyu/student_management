@@ -61,6 +61,9 @@ List<Student>? _student;
 
           }
         }
+        if(!isFound){
+        addStudent(newStudent);
+        }
   }
 }
 
