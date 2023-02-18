@@ -47,5 +47,8 @@ List<Student>? _student;
   removeStudent(Student student) {
     registeredList.removeWhere((element) => element.student.id == student.id);
   }
+  clearRegisteredStudent(){
+    registeredList.clear();
+  }
 }
 
