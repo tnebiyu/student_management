@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:student_management/widgets/drawer_widget.dart';
 
 import '../Utils/constants.dart';
 import '../data_manager/data_manager.dart';
 import '../model/student_model.dart';
 class Home extends StatelessWidget {
-StudentManagement studentManagement;
-  Home({Key? key, required this.studentManagement }) : super(key: key);
+final StudentManagement studentManagement;
+  const Home({Key? key, required this.studentManagement }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +14,7 @@ StudentManagement studentManagement;
       future: studentManagement.getStudent(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          var student =snapshot.data! as List<Student>;
+          var student =snapshot.data!;
           return Scaffold(
             appBar: AppBar(
               title: const Text('Student Management'),
@@ -29,31 +30,23 @@ StudentManagement studentManagement;
                     // ),
                     title: Text('${student[index].firstName} ${student[index].lastName}',
 
-                      style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: kTextStyle1,
                     ),
                     subtitle: Text(
                       '${student[index].course}',
-                      style: const TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: kTextStyle1,
                     ),
                     trailing: Text(
                       '${student[index].age}',
-                      style:const  TextStyle(
-                        color: kPrimaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style:kTextStyle1,
                     ),
                   ),
                 );
               },
             ),
-          );
+            drawer: const DrawerCustom());
         }
+
        if(snapshot.hasError){
          return const Scaffold(
            body: Center(

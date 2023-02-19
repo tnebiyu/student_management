@@ -7,10 +7,9 @@ List<Student>? _student;
   List<RegisteredStudent> registeredList  = [];
   fetchStudent() async {
     try {
-      const url = 'http://localhost:8091/api/v1/students';
+      const url = 'http://10.0.2.2:8080/api/v1/students';
 
       var response = await http.get(Uri.parse(url));
-
       if (response.statusCode == 200) {
         _student = [];
         var decodedData = jsonDecode(response.body) as List<dynamic>;
